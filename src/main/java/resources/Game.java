@@ -7,7 +7,7 @@ public class Game {
     int height = 20;
     int width = 20;
     int filled = 0;
-    Cell[][] game_field = new Cell[height][width]; // temporary public
+    Cell[][] game_field = new Cell[height][width];
     Snake[] snakes = new Snake[2];
 
     public Game() {

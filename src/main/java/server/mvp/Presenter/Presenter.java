@@ -7,14 +7,16 @@ import server.mvp.Model.IModelServer;
 class Presenter implements IPresenter{
     IViewServer v;
     IModelServer observed_model;
+    int id;
 
-    public Presenter(IModelServer _m, IViewServer _v)
+    public Presenter(IModelServer _m, IViewServer _v, int _id)
     {
         v = _v;
         observed_model = _m;
+        id = _id;
 
         start();
-        observed_model.addPresenter(this);
+        observed_model.addPresenter(id,this);
     }
 
     void start()
@@ -30,12 +32,12 @@ class Presenter implements IPresenter{
                     code = v.getOp();
                     if(code == 1)
                     {
-                        observed_model.setCell(v.getCell());
+                        observed_model.setCell(id, v.getCell());
                     }
                     if(code == 2)
                     {
                         v.setOp(1);
-                        v.setCell(observed_model.getBuffer());
+                        v.setCell(observed_model.getBuffer(id));
                     }
                     if(code == -1)
                     {
@@ -50,7 +52,7 @@ class Presenter implements IPresenter{
     @Override
     public void update() {
         v.setOp(1);
-        v.setCell(observed_model.getBuffer());
+        v.setCell(observed_model.getBuffer(id));
     }
 
 }

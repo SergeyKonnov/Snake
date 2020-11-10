@@ -14,6 +14,12 @@ public class Cell {
     public int x, y;
     public CellState state;
 
+    public Cell() {
+        x = 0;
+        y = 0;
+        state = CellState.empty;
+    }
+
     public Cell (int _x, int _y, CellState _state) {
         x = _x;
         y = _y;

@@ -5,8 +5,8 @@ import server.mvp.Model.IModelServer;
 
 
 public class BPresenter {
-    static public IPresenter build(IModelServer model, IViewServer view)
+    static public IPresenter build(IModelServer model, IViewServer view, int id)
     {
-        return new Presenter(model, view);
+        return new Presenter(model, view, id);
     }
 }

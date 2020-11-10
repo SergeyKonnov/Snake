@@ -42,7 +42,7 @@ public class ViewServer implements IViewServer{
             @Override
             public void run() {
                 try {
-                    System.out.printf("Send: x=%d, y=%d, state = %s", point.x, point.y, point.state);
+                    System.out.printf("Send: x=%d, y=%d, state = %s\n", point.x, point.y, point.state);
                     dos.writeInt(point.x);
                     dos.writeInt(point.y);
                     dos.writeInt(point.state.ordinal());

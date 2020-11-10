@@ -48,8 +48,8 @@ public class ModelClient {
             Logger.getLogger(ModelClient.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-
             cs = new Socket(ip, port);
+            System.out.println(cs.getRemoteSocketAddress().toString() + "!!!");
             System.out.append("Client start \n");
 
             dis = new DataInputStream(cs.getInputStream());

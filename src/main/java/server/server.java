@@ -26,6 +26,7 @@ public class server {
 
         ServerSocket ss;
         Socket cs;
+        int id = 0;
         try {
             ip = InetAddress.getLocalHost();
         } catch (UnknownHostException ex) {
@@ -39,7 +40,7 @@ public class server {
                 cs = ss.accept();
                 System.out.println("Has connect");
                 IViewServer v = BViewServer.build(cs);
-                IPresenter p = BPresenter.build(game_model, v);
+                IPresenter p = BPresenter.build(game_model, v, id++);
             }
         } catch (IOException ex) {
             Logger.getLogger(server.class.getName()).log(Level.SEVERE, null, ex);

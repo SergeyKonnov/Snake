@@ -63,7 +63,7 @@ public class ViewClient extends javax.swing.JPanel implements IObserver{
         Cell point = m.getPoint();
         if (point == null)
             return;
-        System.out.printf("new point = %s", point.state);
+        System.out.printf("new point: x = %d, y = %d, %s\n", point.x, point.y, point.state);
         viewField[point.x][point.y].setIcon(point.getIcon());
     }
 }
