@@ -36,8 +36,7 @@ class Presenter implements IPresenter{
                     }
                     if(code == 2)
                     {
-                        v.setOp(1);
-                        v.setCell(observed_model.getBuffer(id));
+                        v.setOpAndCell(id, 1, observed_model.getBuffer(id));
                     }
                     if(code == -1)
                     {
@@ -51,8 +50,7 @@ class Presenter implements IPresenter{
 
     @Override
     public void update() {
-        v.setOp(1);
-        v.setCell(observed_model.getBuffer(id));
+        v.setOpAndCell(id, 1, observed_model.getBuffer(id));
     }
 
 }

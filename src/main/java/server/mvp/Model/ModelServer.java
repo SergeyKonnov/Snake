@@ -36,14 +36,15 @@ class ModelServer implements IModelServer{
     void refresh(int game_id)
     {
         for (int i = 0; i < list_players.size(); i++) {
-            if(getGameId(i) == game_id)
+            if(getGameId(i) == game_id) {// add additional HashMap game_id->p_ids
                 list_players.get(i).update();
+            }
         }
     }
 
     public Cell getBuffer(int p_id) {
         int game_id = getGameId(p_id);
-        System.out.printf("buffer p_id = %d, game = %d, x = %d, buffer y = %d, state = %s\n", p_id, game_id, buffer.get(game_id).x, buffer.get(game_id).y, buffer.get(game_id).state);
+        System.out.printf("buffer p_id = %d, game = %d, x = %d, y = %d, state = %s\n", p_id, game_id, buffer.get(game_id).x, buffer.get(game_id).y, buffer.get(game_id).state);
         return buffer.get(game_id);
     }
 

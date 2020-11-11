@@ -5,7 +5,6 @@ import resources.Cell;
 
 public interface IViewServer {
     int getOp();
-    void setCell(final Cell point);
+    void setOpAndCell(int p_id, int op, final Cell point);
     Cell getCell();
-    void setOp(int op);
 }

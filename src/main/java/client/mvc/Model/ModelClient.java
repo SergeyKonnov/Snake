@@ -49,7 +49,6 @@ public class ModelClient {
         }
         try {
             cs = new Socket(ip, port);
-            System.out.println(cs.getRemoteSocketAddress().toString() + "!!!");
             System.out.append("Client start \n");
 
             dis = new DataInputStream(cs.getInputStream());
@@ -64,11 +63,11 @@ public class ModelClient {
                             int op = dis.readInt();
                             if(op == 1)
                             {
-                                op = dis.readInt();
                                 int x = dis.readInt();
                                 int y = dis.readInt();
-                                CellState state = CellState.fromInteger(dis.readInt());
-                                System.out.printf("Received: x=%d; y=%d state = %s\n", x, y, state);
+                                int stateOrdinal = dis.readInt();
+                                CellState state = CellState.fromInteger(stateOrdinal);
+                                System.out.printf("Received: x=%d; y=%d state = %s stateOrdinal = %d\n", x, y, state, stateOrdinal);
                                 point = new Cell(x, y, state);
                                 refresh();
                             }

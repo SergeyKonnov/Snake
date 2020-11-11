@@ -36,25 +36,6 @@ public class ViewServer implements IViewServer{
         return -1;
     }
 
-    public void setCell(final Cell point) {
-        new Thread()
-        {
-            @Override
-            public void run() {
-                try {
-                    System.out.printf("Send: x=%d, y=%d, state = %s\n", point.x, point.y, point.state);
-                    dos.writeInt(point.x);
-                    dos.writeInt(point.y);
-                    dos.writeInt(point.state.ordinal());
-                    dos.flush();
-                } catch (IOException ex) {
-                    Logger.getLogger(ViewServer.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }.start();
-
-    }
-
     public Cell getCell() {
         try {
             int x = dis.readInt();
@@ -68,14 +49,17 @@ public class ViewServer implements IViewServer{
         return null;
     }
 
-    public void setOp(int op) {
+    public void setOpAndCell(int p_id, int op, final Cell point) {
         try {
             dos.writeInt(op);
+            System.out.printf("Send: op=%d, p_id=%d, x=%d, y=%d, state = %s, stateOrdinal = %d\n", op, p_id, point.x, point.y, point.state, point.state.ordinal());
+            dos.writeInt(point.x);
+            dos.writeInt(point.y);
+            dos.writeInt(point.state.ordinal());
             dos.flush();
         } catch (IOException ex) {
             Logger.getLogger(ViewServer.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
 }
